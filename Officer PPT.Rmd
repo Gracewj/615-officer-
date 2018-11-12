@@ -47,11 +47,11 @@ temp %<>%  add_slide(layout = "Title and Vertical Text", master = master  ) %>%
              level_list =  c(1,1,2,3,3,2,3,3))
 
 temp %<>% add_slide(layout = "Picture with Caption", master = master ) %>% 
-  ph_with_text(type = "title", str = "What is a Bear Market") %>% 
+  ph_with_text(type = "title", str = "What is a Bear Market?") %>% 
   ph_with_img(type = "pic", src = "Untitled.png", height = 2)
   
 temp %<>% add_slide(layout = "Picture with Caption", master = master ) %>% 
-  ph_with_text(type = "title", str = "What is a Bear Market") %>% 
+  ph_with_text(type = "title", str = "Stock Market Indexes: the Dow Jones Industrial Average") %>% 
   ph_with_img(type = "pic", src = "Untitled1.png", height = 2)
 print(temp, target = "Officer.pptx") 
 ```
