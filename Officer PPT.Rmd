@@ -33,8 +33,10 @@ temp %<>%  add_slide(layout = "Title and Vertical Text", master = master  ) %>%
                             "2. Earn a return in two ways", 
                             "Price of the stock rises over time",
                             "Dividends are paid to the stockholder", 
-                            "3. Stockholders have claim on all assets", 
-                            "4. Right to vote for directors and on certain issues",
+                            "3. Stockholders have claim on all assets"),
+               level_list = c(1,1,2,2,1)) %>% 
+  ph_with_ul(type = "body", index = 2, 
+             str_list = c("4. Right to vote for directors and on certain issues",
                             "5. Two types",
                             "Common stock",
                             "Right to vote",
@@ -42,7 +44,8 @@ temp %<>%  add_slide(layout = "Title and Vertical Text", master = master  ) %>%
                             "Preferred stock",
                             "Receive a fixed dividend",
                             "Do not usually vote"),
-               level_list = c(1,1,2,2,1,1,1,2,3,3,2,3,3))
+             level_list =  c(1,1,2,3,3,2,3,3))
+
   
 
 print(temp, target = "Officer.pptx") 
