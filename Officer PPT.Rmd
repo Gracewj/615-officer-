@@ -26,16 +26,16 @@ temp %<>%  add_slide(layout = "Title Slide", master = master) %>%
   ph_with_text(type="subTitle", str="Yes there is a positive side to a Bear Market!
 ")
 
-temp %<>%  add_slide(layout = "Title and Vertical Text", master = master  ) %>% 
+temp %<>%  add_slide(layout = "Two Content", master = master  ) %>% 
   ph_with_text(type = "title", str = "Investing in Stocks") %>% 
-  ph_with_ul(type = "body", index = 1, 
+  ph_with_ul(type = "body", index = 2, 
                str_list = c("1. Represents ownership in a firm", 
                             "2. Earn a return in two ways", 
                             "Price of the stock rises over time",
                             "Dividends are paid to the stockholder", 
                             "3. Stockholders have claim on all assets"),
                level_list = c(1,1,2,2,1)) %>% 
-  ph_with_ul(type = "body", index = 2, 
+  ph_with_ul(type = "body", index = 1, 
              str_list = c("4. Right to vote for directors and on certain issues",
                             "5. Two types",
                             "Common stock",
