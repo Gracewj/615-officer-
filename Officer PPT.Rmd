@@ -1,0 +1,40 @@
+---
+title: "Officer PPT"
+author: "Qianhui Rong"
+date: "11/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(officer)
+library(magrittr)
+library(tidyverse)
+library(readxl)
+
+temp <- read_pptx("Template.pptx") 
+layout_summary(temp)
+master <- "Gallery"
+layout_properties(x = temp, layout = "Title Slide", master = master )
+
+temp %<>%  add_slide(layout = "Title Slide", master = master) %>% 
+  ph_with_text(type = "ctrTitle", str = "Advantages of a Bear Market") %>% 
+  ph_with_text(type =  "dt", str = format(Sys.Date())) %>% 
+  ph_with_text(type = "ftr", str = "Yes!") %>% 
+  ph_with_text(type="")
+
+temp %<>%  add_slide(layout = "Title and Vertical Text", master = master  ) %>% 
+  ph_with_text(type = "title", str = "Investing in Stocks") %>% 
+  ph_with_ul(type = "body", index = 1, 
+               str_list = c("1. Represents ownership in a firm 
+","2. Earn a return in two ways: Price of the stock rises over time and Dividends are paid to the stockholder", "3. Stockholders have claim on all assets"),
+               level_list = c(1,1,1))
+  
+
+print(temp, target = "Officer.pptx") 
+```
+
+
