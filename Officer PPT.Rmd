@@ -35,7 +35,7 @@ temp %<>%  add_slide(layout = "Title Slide", master = master) %>%
 
 #Second slide with text
 temp %<>%  add_slide(layout = "Two Content", master = master  ) %>% 
-
+ph_with_text(type = "title", str = "Investing in stock") %>% 
   ph_with_ul(type = "body", index = 2, 
                str_list = c("1. Represents ownership in a firm", 
                             "2. Earn a return in two ways", 
@@ -68,6 +68,7 @@ temp %<>% add_slide(layout = "Title and Content", master = master ) %>%
 
 
 #Fifth slide
+DJI85 <- read_excel("ppt examples/DJI85.xlsx")
 myg <-ggplot(DJI85) +
   geom_line(aes(x = Date, y = High))
 
@@ -77,7 +78,7 @@ temp %<>% add_slide(layout = "Title and Content", master = master ) %>%
  ph_with_vg(code = print(myg), 
              type = 'body')
  
-DJI85 <- read_excel("ppt examples/DJI85.xlsx")
+
 #DJI85$Date <- format(as.Date(DJI85$Date), "%Y")
 
 
