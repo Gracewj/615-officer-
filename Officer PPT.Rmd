@@ -14,11 +14,14 @@ library(officer)
 library(magrittr)
 library(tidyverse)
 library(readxl)
-
+library(rvg)
+#General Set up
 temp <- read_pptx("Template.pptx") 
 layout_summary(temp)
 master <- "Gallery"
 layout_properties(x = temp, layout = "Title Slide", master = master )
+
+#First slide with title
 
 temp %<>%  add_slide(layout = "Title Slide", master = master) %>% 
   ph_with_text(type = "ctrTitle", str = "Advantages of a Bear Market") %>% 
@@ -26,9 +29,10 @@ temp %<>%  add_slide(layout = "Title Slide", master = master) %>%
   ph_with_text(type="subTitle", str="Yes there is a positive side to a Bear Market!
 ")
 
+#Second slide with text
 temp %<>%  add_slide(layout = "Two Content", master = master  ) %>% 
   ph_with_text(type = "title", str = "Investing in Stock") %>% 
-  ph_with_ul(type = "body", index = 1, 
+  ph_with_ul(type = "body", index = 2, 
                str_list = c("1. Represents ownership in a firm", 
                             "2. Earn a return in two ways", 
                             "Price of the stock rises over time",
@@ -45,14 +49,38 @@ temp %<>%  add_slide(layout = "Two Content", master = master  ) %>%
                             "Receive a fixed dividend",
                             "Do not usually vote"),
              level_list =  c(1,1,2,3,3,2,3,3))
+#Third slide
 
-temp %<>% add_slide(layout = "Picture with Caption", master = master ) %>% 
+temp %<>% add_slide(layout = "Title and Content", master = master ) %>% 
+  ph_with_text(type = "title", str = "Investing in Stocks: Sample Corporate Stock Certificate") %>% 
+  ph_with_img( src = "stock.jpg")
+
+#Fourth slide
+
+temp %<>% add_slide(layout = "Title and Content", master = master ) %>% 
+  ph_with_text(type = "title", str = "Investing in Stocks: Sample Corporate Stock Certificate") %>% 
+  ph_with_text(type = "body", str = "A decline of 15-20% of the broad market coupled with pessimistic sentiment underlying the stock market.")%>%
+  ph_with_img_at( src = "bear.png", width = 4, height = 3, left = 7, top = 3.5)
+
+
+#Fifth slide
+myg <-ggplot(DJI85) +
+  geom_line(aes(x = Date, y = High))
+
+
+temp %<>% add_slide(layout = "Title and Content", master = master ) %>% 
   ph_with_text(type = "title", str = "What is a Bear Market?") %>% 
-  ph_with_img(type = "pic", src = "Untitled.png", height = 2)
-  
-temp %<>% add_slide(layout = "Picture with Caption", master = master ) %>% 
+ ph_with_vg(code = print(myg), 
+             type = 'body')
+ 
+DJI85 <- read_excel("ppt examples/DJI85.xlsx")
+#DJI85$Date <- format(as.Date(DJI85$Date), "%Y")
+
+
+#Sixth 
+temp %<>% add_slide(layout = "Title and Content", master = master ) %>% 
   ph_with_text(type = "title", str = "Stock Market Indexes: the Dow Jones Industrial Average") %>% 
-  ph_with_img(type = "pic", src = "Untitled1.png", height = 2)
+  ph_with_img( src = "Untitled1.png")
 
 ## Slide 7
 temp %<>% 
@@ -88,6 +116,9 @@ temp %<>%
                            "Check your portfolio for balance or the type of stocks you own"),
              level_list = c(1, 1, 1, 1),
              style = fp_text(font.size = 28, font.family = "Arial", bold = TRUE))
+
+remove_slide(temp, index = 1)
+
 
 print(temp, target = "Officer.pptx") 
 ```
