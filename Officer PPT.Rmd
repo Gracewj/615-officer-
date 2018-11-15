@@ -47,12 +47,48 @@ temp %<>%  add_slide(layout = "Two Content", master = master  ) %>%
              level_list =  c(1,1,2,3,3,2,3,3))
 
 temp %<>% add_slide(layout = "Picture with Caption", master = master ) %>% 
-  ph_with_text(type = "title", str = "What is a Bear Market") %>% 
+  ph_with_text(type = "title", str = "What is a Bear Market?") %>% 
   ph_with_img(type = "pic", src = "Untitled.png", height = 2)
   
 temp %<>% add_slide(layout = "Picture with Caption", master = master ) %>% 
-  ph_with_text(type = "title", str = "What is a Bear Market") %>% 
+  ph_with_text(type = "title", str = "Stock Market Indexes: the Dow Jones Industrial Average") %>% 
   ph_with_img(type = "pic", src = "Untitled1.png", height = 2)
+
+## Slide 7
+temp %<>% 
+  add_slide(layout = "Title and Content",
+            master = master) %>% 
+  ph_empty(type = 'title') %>%
+  ph_add_fpar(fpar(ftext('the last Bear Market',
+                         prop = fp_text(font.family = 'Arial (Headings)', 
+                                        font.size = 44,
+                                        bold = TRUE))), 
+              type = 'title') %>%
+  ph_with_ul(type="body", 
+             str_list = c("Sept. 30, 2002 Dow 7528", 
+                          "Jan. 5, 2004 Dow 10,568", 
+                          "Oct. 8, 2007 Dow 14093"), 
+             level_list = c(1, 1, 1), 
+             style = fp_text(font.size = 36, font.family = "Arial", bold = TRUE)) 
+
+# Slide 8
+temp %<>% 
+  add_slide(layout = "Title and Content",
+            master = master) %>% 
+    ph_empty(type = 'title') %>%
+  ph_add_fpar(fpar(ftext('What I do in a Bear Market',
+                         prop = fp_text(font.family = 'Arial (Headings)', 
+                                        font.size = 44,
+                                        bold = TRUE))), 
+              type = 'title') %>%
+  ph_with_ul(type="body", 
+             str_list =  c("Decide whether this is a market correction or the start of something more", 
+                           "Review the stocks you own",
+                           "Review stocks you wanted to own but were too expensive at time of research", 
+                           "Check your portfolio for balance or the type of stocks you own"),
+             level_list = c(1, 1, 1, 1),
+             style = fp_text(font.size = 28, font.family = "Arial", bold = TRUE))
+
 print(temp, target = "Officer.pptx") 
 ```
 
