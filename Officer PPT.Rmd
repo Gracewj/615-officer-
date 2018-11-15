@@ -1,6 +1,6 @@
 ---
 title: "Officer PPT"
-author: "Qianhui Rong"
+author: "Qianhui Rong, Andrew Zhang, Wenjia Xie, Longhao Chen"
 date: "11/12/2018"
 output: html_document
 ---
