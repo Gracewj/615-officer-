@@ -1,6 +1,10 @@
 ---
 title: "Officer PPT"
+<<<<<<< HEAD
 author: "Qianhui Rong, Andrew Zhang, Wenjia Xie, Longhao Chen"
+=======
+author: "Longhao Chen/Qianhui Rong/Wenjia Xie/Andrew Zhang"
+>>>>>>> d030fe9e72dabbca7a176ef349f23161d641d12d
 date: "11/12/2018"
 output: html_document
 ---
@@ -31,7 +35,7 @@ temp %<>%  add_slide(layout = "Title Slide", master = master) %>%
 
 #Second slide with text
 temp %<>%  add_slide(layout = "Two Content", master = master  ) %>% 
-  ph_with_text(type = "title", str = "Investing in Stock") %>% 
+
   ph_with_ul(type = "body", index = 2, 
                str_list = c("1. Represents ownership in a firm", 
                             "2. Earn a return in two ways", 
